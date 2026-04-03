@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Task Manager</h1>
+      <p>Add, view, update, delete tasks, and set reminders</p>
+    </header>
+
+    <section class="task-form-card">
+      <h2 id="form-title">Add a New Task</h2>
+      <form id="taskForm">
+        <div class="form-row">
+          <label for="taskTitle">Title</label>
+          <input id="taskTitle" type="text" placeholder="Task title" required />
+        </div>
+        <div class="form-row">
+          <label for="taskDescription">Description</label>
+          <textarea id="taskDescription" rows="3" placeholder="Task description"></textarea>
+        </div>
+        <div class="form-row split-row">
+          <div>
+            <label for="taskDueDate">Due Date</label>
+            <input id="taskDueDate" type="date" />
+          </div>
+          <div>
+            <label for="taskDueTime">Due Time</label>
+            <input id="taskDueTime" type="time" />
+          </div>
+        </div>
+        <div class="form-row split-row">
+          <label class="checkbox-label">
+            <input id="taskReminder" type="checkbox" /> Set Reminder
+          </label>
+          <input id="taskReminderTime" type="datetime-local" disabled />
+        </div>
+        <input id="taskId" type="hidden" value="" />
+        <button type="submit" id="submitBtn" class="btn btn-primary">Add Task</button>
+        <button type="button" id="cancelEditBtn" class="btn btn-secondary hide">Cancel</button>
+      </form>
+    </section>
+
+    <section class="task-list-card">
+      <h2>Tasks</h2>
+      <div id="taskList" class="task-list"></div>
+      <p id="emptyState" class="empty-state">No tasks yet. Add one above.</p>
+    </section>
+  </div>
+
+  <template id="taskCardTemplate">
+    <article class="task-card">
+      <div class="task-main">
+        <h3 class="task-title"></h3>
+        <p class="task-desc"></p>
+      </div>
+      <div class="task-meta">
+        <span class="due-label"></span>
+        <span class="reminder-label"></span>
+      </div>
+      <div class="task-actions">
+        <button class="btn btn-success btn-edit">Edit</button>
+        <button class="btn btn-alert btn-delete">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
